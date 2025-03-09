@@ -3,12 +3,28 @@
 Install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) yourself.
 
 ## Usage
+Start this repository:
+``` sh
+git clone https://github.com/minhlc1108/odoo-hr-payroll.git
+```
+
+``` sh
+cd odoo-hr-payroll
+```
 
 Start the container:
 ``` sh
 docker-compose up
 ```
 Then open `localhost:8069` to access Odoo 18.
+
+- If you want to start the server with a different port, change **8069** to another value in **docker-compose.yml** inside the parent dir:
+
+```
+ports:
+ - "8069:8069"
+```
+
 - To run Odoo container in detached mode (be able to close terminal without stopping Odoo):
 
 ```
