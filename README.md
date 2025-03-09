@@ -3,7 +3,7 @@
 Install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) yourself.
 
 ## Usage
-Start this repository:
+Clone this repository:
 ``` sh
 git clone https://github.com/minhlc1108/odoo-hr-payroll.git
 ```
