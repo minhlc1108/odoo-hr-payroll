@@ -3,7 +3,7 @@
 #    A part of Open HRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 2024-TODAY Cybrosys Technologies (<https://www.cybrosys.com>)
+#    Copyright (C) 2023-TODAY Cybrosys Technologies (<https://www.cybrosys.com>)
 #
 #    This program is free software: you can modify
 #    it under the terms of the GNU Affero General Public License (AGPL) as
@@ -35,23 +35,18 @@ class Survey(main.Survey):
         appraisal is cancelled, done or has not started"""
         res = super(
             Survey, self).survey_start(
-            survey_token=survey_token, answer_token=answer_token, email=email,
-            **post)
+            survey_token=survey_token, answer_token=answer_token, email=email, **post)
         access_data = self._get_access_data(survey_token, answer_token,
                                             ensure_token=False)
         if access_data.get('answer_sudo').appraisal_id:
-            if access_data.get(
-                    'answer_sudo').appraisal_id.stage_id.name == "Cancel":
+            if access_data.get('answer_sudo').appraisal_id.stage_id.name == "Cancel":
                 return request.render("oh_appraisal.appraisal_canceled",
-                                      {'survey': access_data.get(
-                                          'survey_sudo')})
-            elif access_data.get(
-                    'answer_sudo').appraisal_id.stage_id.name == "Done":
+                                      {'survey': access_data.get('survey_sudo')})
+            elif access_data.get('answer_sudo').appraisal_id.stage_id.name == "Done":
                 return request.render("oh_appraisal.appraisal_done",
                                       {'survey': access_data.get(
                                           'survey_sudo')})
-            elif access_data.get(
-                    'answer_sudo').appraisal_id.stage_id.name == "To Start":
+            elif access_data.get('answer_sudo').appraisal_id.stage_id.name == "To Start":
                 return request.render("oh_appraisal.appraisal_draft",
                                       {'survey': access_data.get(
                                           'survey_sudo')})

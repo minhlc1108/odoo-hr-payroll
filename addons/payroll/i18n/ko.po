@@ -41,6 +41,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "\n"
 "Wrong python code defined for salary rule %(nm)s (%(code)s) for employee "
@@ -53,6 +54,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "\n"
 "Wrong python condition defined for salary rule %(nm)s (%(code)s) for "
@@ -65,6 +67,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payroll_structure.py:0
+#, python-format
 msgid "%s (copy)"
 msgstr "%s (사본)"
 
@@ -215,18 +218,17 @@ msgstr ""
 #: model:mail.template,body_html:payroll.mail_template_hr_payslip
 msgid ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
-"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;"
-"\">\n"
-"            Dear <t t-out=\"object.employee_id.name\"/>,\n"
-"            <br/><br/>\n"
+"        <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"            Dear <t t-out=\"object.employee_id.name\"></t>,\n"
+"            <br><br>\n"
 "            Please find attached the payslip for <t t-out=\"object."
-"payslip_run_id.name\"/>.\n"
-"            <br/><br/>\n"
+"payslip_run_id.name\"></t>.\n"
+"            <br><br>\n"
 "            Do not hesitate to contact us if you have any questions.\n"
-"            <br/><br/>\n"
-"            <t t-out=\"user.signature\"/>\n"
+"            <br><br>\n"
+"            <t t-out=\"user.signature\"></t>\n"
 "        </p>\n"
-"                </div>\n"
+"    </div>\n"
 "            "
 msgstr ""
 
@@ -565,6 +567,7 @@ msgstr "급여 명세서 취소"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Cannot cancel a payslip that is done."
 msgstr "완료된 급여 명세서는 취소할 수 없습니다."
 
@@ -946,6 +949,7 @@ msgstr ""
 #: model:ir.model,name:payroll.model_hr_employee
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__employee_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__employee_id
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
 msgid "Employee"
 msgstr "직원"
 
@@ -981,12 +985,14 @@ msgstr "직원"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule_category.py:0
+#, python-format
 msgid "Error! You cannot create recursive hierarchy of Salary Rule Category."
 msgstr "오류! 급여 규칙 범주의 재귀 계층 구조를 만들 수 없습니다."
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid "Error! You cannot create recursive hierarchy of Salary Rules."
 msgstr "오류! 급여 규칙의 재귀 계층 구조를 만들 수 없습니다."
 
@@ -1041,6 +1047,7 @@ msgstr "예를 들면 50%의 비율을 적용하려면 50.0을 입력합니다"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/report/report_contribution_register.py:0
+#, python-format
 msgid "Form content is missing, this report cannot be printed."
 msgstr "양식 내용이 누락되어서 이 보고서를 인쇄할 수 없습니다."
 
@@ -1068,6 +1075,7 @@ msgstr "판매액의 1% 지급"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Global Leaves"
 msgstr "전체 휴가"
 
@@ -1404,6 +1412,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Normal Working Days paid at 100%"
 msgstr "정상 근무일은 100 % 지급"
 
@@ -1455,6 +1464,7 @@ msgstr "부서장"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only draft payslips can be verified,the payslip %(nm)s is in %(st)s state"
 msgstr ""
@@ -1462,6 +1472,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only payslips in states verify or draft can be confirmed, the payslip %(nm)s "
 "is in %(st)s state"
@@ -1470,6 +1481,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only rejected payslips can be reset to draft, the payslip %(nm)s is in "
 "%(st)s state"
@@ -1584,6 +1596,7 @@ msgstr "급여 명세서"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Payslip 'Date From' must be earlier than 'Date To'."
 msgstr ""
 
@@ -1683,6 +1696,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:payroll.hr_employee_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_run_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
+#, python-format
 msgid "Payslips"
 msgstr "급여 명세서"
 
@@ -1816,6 +1830,7 @@ msgstr "비율(%)"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip_line.py:0
+#, python-format
 msgid "Recursion error. Only one line should be parent of %s"
 msgstr ""
 
@@ -1838,12 +1853,14 @@ msgstr "환불"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Refund Payslip"
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Refund: %s"
 msgstr ""
 
@@ -1968,6 +1985,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Salary Slip of %(name)s for %(dt)s"
 msgstr ""
 
@@ -2136,6 +2154,7 @@ msgstr "이 규칙에 적용되는 최소 금액입니다."
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid "The payslip %(nm)s is already canceled please deselect it"
 msgstr ""
 
@@ -2159,6 +2178,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid ""
 "To cancel the Original Payslip the\n"
 "                        Refunded Payslip needs to be canceled first!"
@@ -2196,18 +2216,6 @@ msgid "Waiting"
 msgstr "대기중"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip__website_message_ids
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: payroll
-#: model:ir.model.fields,help:payroll.field_hr_payslip__website_message_ids
-#: model:ir.model.fields,help:payroll.field_hr_payslip_run__website_message_ids
-msgid "Website communication history"
-msgstr ""
-
-#. module: payroll
 #: model:ir.model.fields.selection,name:payroll.selection__hr_contract__schedule_pay__weekly
 msgid "Weekly"
 msgstr "매주"
@@ -2240,6 +2248,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong percentage base or quantity defined for salary rule %(nm)s (%(code)s) "
 "for employee %(ee)s."
@@ -2248,6 +2257,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong quantity defined for salary rule %(nm)s (%(code)s) for employee %(ee)s."
 msgstr ""
@@ -2255,6 +2265,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong range condition defined for salary rule %(nm)s (%(code)s) for employee "
 "%(ee)s."
@@ -2263,31 +2274,30 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payroll_structure.py:0
+#, python-format
 msgid "You cannot create a recursive salary structure."
 msgstr "재귀 급여 구조는 만들 수 없습니다."
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "You cannot delete a payslip which is not draft or cancelled"
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payroll_payslips_by_employees.py:0
+#, python-format
 msgid "You must select employee(s) to generate payslip(s)."
 msgstr "급여 명세서를 생성하려면 직원을 선택해야 합니다."
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip_line.py:0
+#, python-format
 msgid "You must set a contract to create a payslip line."
 msgstr "급여 명세를 만들기 위해서는 근로 계약을 설정해야 합니다."
-
-#. module: payroll
-#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
-msgid "period"
-msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip_line__amount_percentage_base
@@ -2299,3 +2309,142 @@ msgstr "결과는 변수에 영향을 받을 것입니다"
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_line_view_form
 msgid "total_net"
 msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "최근 수정"
+
+#~ msgid "Input Data"
+#~ msgstr "입력 데이터"
+
+#, python-format
+#~ msgid "Salary Slip of %s for %s"
+#~ msgstr "%s의 %s에 대한 급여 전표"
+
+#~ msgid "Post payroll slips in accounting"
+#~ msgstr "회계에서 급여 전표 전기"
+
+#, python-format
+#~ msgid "Wrong percentage base or quantity defined for salary rule %s (%s)."
+#~ msgstr ""
+#~ "%s 급여 규정 (%s)에 대해 정의된 백분율 기준 또는 수량이 잘못되었습니다."
+
+#, python-format
+#~ msgid "Wrong quantity defined for salary rule %s (%s)."
+#~ msgstr "%s 급여 규정 (%s)에 대해 정의된 수량이 잘못되었습니다."
+
+#, python-format
+#~ msgid "Wrong range condition defined for salary rule %s (%s)."
+#~ msgstr "%s 급여 규정(%s)에 대해 잘못된 범위 조건이 정의되었습니다."
+
+#~ msgid "General"
+#~ msgstr "일반"
+
+#~ msgid "Draft Slip"
+#~ msgstr "명세서 초안 작성"
+
+#~ msgid "Total Working Days"
+#~ msgstr "총 근무일"
+
+#~ msgid "Details By Salary Rule Category"
+#~ msgstr "급여 규정 범주 세부사항"
+
+#~ msgid "Advantage Name"
+#~ msgstr "장점명"
+
+#~ msgid "Contract Advantage Templates"
+#~ msgstr "근로 계약 우대 서식"
+
+#~ msgid "Default value for this advantage"
+#~ msgstr "이 혜택에 대한 기본값"
+
+#~ msgid "Employee's Advantage on Contract"
+#~ msgstr "근로 계약에 따른 직원 혜택"
+
+#~ msgid "Lower Bound"
+#~ msgstr "하한선"
+
+#~ msgid "Lower bound authorized by the employer for this advantage"
+#~ msgstr "이 혜택을 위해 고용주가 승인한 하한선"
+
+#~ msgid "Upper Bound"
+#~ msgstr "상한선"
+
+#~ msgid "Upper bound authorized by the employer for this advantage"
+#~ msgstr "이 혜택을 위해 고용주가 승인한 상한선"
+
+#~ msgid "Wrong python code defined for salary rule %s (%s)."
+#~ msgstr "%s 급여 규정(%s)에 대해 잘못된 파이썬 코드가 정의되었습니다."
+
+#~ msgid "Wrong python condition defined for salary rule %s (%s)."
+#~ msgstr "%s 급여 규정(%s)에 대해 잘못된 파이썬 조건이 정의되었습니다."
+
+#~ msgid ""
+#~ "<span colspan=\"4\" nolabel=\"1\">This wizard will generate payslips for "
+#~ "all selected employee(s) based on the dates and credit note specified on "
+#~ "Payslips Run.</span>"
+#~ msgstr ""
+#~ "<span colspan=\"4\" nolabel=\"1\">이 마법사는 급여 명세서 생성에 지정된 날"
+#~ "짜와 대변 전표를 기준으로 선택한 모든 직원에게 급여 명세서를 생성합니다.</"
+#~ "span>"
+
+#~ msgid ""
+#~ "A contribution register is a third party involved in the salary\n"
+#~ "            payment of the employees. It can be the social security, the\n"
+#~ "            state or anyone that collect or inject money on payslips."
+#~ msgstr ""
+#~ "기부금 등록부는 종업원의 급여 지급에 관여하는 제 3자를 말합니다.\n"
+#~ "             이것은 사회 보장, 지역 또는 누군가를 위해\n"
+#~ "             급여 지불시 돈을 모으거나 지급할 수 있습니다."
+
+#~ msgid "PaySlip Lines By Conribution Register"
+#~ msgstr "기부 등록부별 급여 명세"
+
+#~ msgid ""
+#~ "* When the payslip is created the status is 'Draft'\n"
+#~ "                \n"
+#~ "* If the payslip is under verification, the status is 'Waiting'.\n"
+#~ "                \n"
+#~ "* If the payslip is confirmed then status is set to 'Done'.\n"
+#~ "                \n"
+#~ "* When user cancel payslip the status is 'Rejected'."
+#~ msgstr ""
+#~ "* '초안' 상태는 급여 명세서를 만든 상태입니다.\n"
+#~ "\n"
+#~ "* '대기' 상태는 급여 명세서가 검토 중인 상태입니다.\n"
+#~ "\n"
+#~ "* '완료' 상태는 급여 명세서가 확인된 상태입니다.\n"
+#~ "\n"
+#~ "* '반려' 상태는 급여 명세서가 취소된 상태입니다."
+
+#~ msgid "<span class=\"o_form_label\">Payroll Rules</span>"
+#~ msgstr "<span class=\"o_form_label\">급여 규정</span>"
+
+#~ msgid "Account"
+#~ msgstr "계정"
+
+#~ msgid "Belgium Payroll"
+#~ msgstr "벨기에식 급여"
+
+#~ msgid "Choose a Payroll Localization"
+#~ msgstr "급여 현지화 선택"
+
+#~ msgid "Conveyance Allowance For Gravie"
+#~ msgstr "Gravie에 대한 운송 수당"
+
+#~ msgid "French Payroll"
+#~ msgstr "프랑스식 급여"
+
+#~ msgid "Indian Payroll"
+#~ msgstr "인도식 급여"
+
+#~ msgid "Payroll rules that apply to your country"
+#~ msgstr "귀하의 국가에 적용되는 급여 규정"
+
+#~ msgid "Payslip 'Date From' must be earlier 'Date To'."
+#~ msgstr "급여 명세서의 '시작일'은 '마감일'보다 앞서야 합니다."
+
+#~ msgid "Refund: "
+#~ msgstr "환불 : "
+
+#~ msgid "You cannot delete a payslip which is not draft or cancelled!"
+#~ msgstr "초안이나 취소되지 않은 급여 명세서는 삭제할 수 없습니다!"

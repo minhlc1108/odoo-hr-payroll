@@ -117,21 +117,25 @@
                         </page>
                     </notebook>
                 </sheet>
-                <chatter/>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"
+                           groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
             </form>
         </field>
     </record>
-    <!--    List view of the model HR Appraisal-->
+    <!--    Tree view of the model HR Appraisal-->
     <record model="ir.ui.view" id="hr_appraisal_view_tree">
-        <field name="name">hr.appraisal.view.list</field>
+        <field name="name">hr.appraisal.view.tree</field>
         <field name="model">hr.appraisal</field>
         <field name="arch" type="xml">
-            <list>
+            <tree>
                 <field name="employee_id"/>
                 <field name="app_period_from"/>
                 <field name="appraisal_deadline"/>
                 <field name="company_id" invisible="1"/>
-            </list>
+            </tree>
         </field>
     </record>
     <!--    Kanban view of model HR Appraisal-->
@@ -201,6 +205,6 @@
         <field name="name">Appraisal</field>
         <field name="res_model">hr.appraisal</field>
         <field name="view_id" ref="hr_appraisal_view_kanban"/>
-        <field name='view_mode'>kanban,list,form</field>
+        <field name='view_mode'>kanban,tree,form</field>
     </record>
 </odoo>

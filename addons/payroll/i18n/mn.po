@@ -41,6 +41,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "\n"
 "Wrong python code defined for salary rule %(nm)s (%(code)s) for employee "
@@ -53,6 +54,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "\n"
 "Wrong python condition defined for salary rule %(nm)s (%(code)s) for "
@@ -65,6 +67,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payroll_structure.py:0
+#, python-format
 msgid "%s (copy)"
 msgstr "%s (хуулбар)"
 
@@ -215,18 +218,17 @@ msgstr ""
 #: model:mail.template,body_html:payroll.mail_template_hr_payslip
 msgid ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
-"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;"
-"\">\n"
-"            Dear <t t-out=\"object.employee_id.name\"/>,\n"
-"            <br/><br/>\n"
+"        <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"            Dear <t t-out=\"object.employee_id.name\"></t>,\n"
+"            <br><br>\n"
 "            Please find attached the payslip for <t t-out=\"object."
-"payslip_run_id.name\"/>.\n"
-"            <br/><br/>\n"
+"payslip_run_id.name\"></t>.\n"
+"            <br><br>\n"
 "            Do not hesitate to contact us if you have any questions.\n"
-"            <br/><br/>\n"
-"            <t t-out=\"user.signature\"/>\n"
+"            <br><br>\n"
+"            <t t-out=\"user.signature\"></t>\n"
 "        </p>\n"
-"                </div>\n"
+"    </div>\n"
 "            "
 msgstr ""
 
@@ -565,6 +567,7 @@ msgstr "Цалингийн хуудсыг цуцлах"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Cannot cancel a payslip that is done."
 msgstr "Хийгдсэн цалингийн хуудсыг цуцлах боломжгүй."
 
@@ -947,6 +950,7 @@ msgstr ""
 #: model:ir.model,name:payroll.model_hr_employee
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__employee_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__employee_id
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
 msgid "Employee"
 msgstr "Ажилтан"
 
@@ -982,12 +986,14 @@ msgstr "Ажилчид"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule_category.py:0
+#, python-format
 msgid "Error! You cannot create recursive hierarchy of Salary Rule Category."
 msgstr "Алдаа! Өөрийгөө агуулсан цалингийн дүрмийн зэрэглэл үүсгэж болохгүй."
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid "Error! You cannot create recursive hierarchy of Salary Rules."
 msgstr "Алдаа! Өөрийгөө агуулсан цалингийн дүрэм үүсгэж болохгүй."
 
@@ -1042,6 +1048,7 @@ msgstr "Жишээлбэл, 50.0 гэж оруулбал 50% байна"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/report/report_contribution_register.py:0
+#, python-format
 msgid "Form content is missing, this report cannot be printed."
 msgstr "Маягтын агуулга байхгүй тул тайланг хэвлэж чадахгүй."
 
@@ -1069,6 +1076,7 @@ msgstr "Борлуулалтын 1%-г олгох"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Global Leaves"
 msgstr "Нийт хоцролт"
 
@@ -1409,6 +1417,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Normal Working Days paid at 100%"
 msgstr "Энгийн ажлын өдөрүүд 100%-р төлөгдөнө"
 
@@ -1460,6 +1469,7 @@ msgstr "Мэргэжилтэн"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only draft payslips can be verified,the payslip %(nm)s is in %(st)s state"
 msgstr ""
@@ -1467,6 +1477,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only payslips in states verify or draft can be confirmed, the payslip %(nm)s "
 "is in %(st)s state"
@@ -1475,6 +1486,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only rejected payslips can be reset to draft, the payslip %(nm)s is in "
 "%(st)s state"
@@ -1589,6 +1601,7 @@ msgstr "Цалингийн хуудас"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Payslip 'Date From' must be earlier than 'Date To'."
 msgstr ""
 
@@ -1688,6 +1701,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:payroll.hr_employee_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_run_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
+#, python-format
 msgid "Payslips"
 msgstr "Цалингийн хуудас"
 
@@ -1821,6 +1835,7 @@ msgstr "Үнэ (%)"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip_line.py:0
+#, python-format
 msgid "Recursion error. Only one line should be parent of %s"
 msgstr ""
 
@@ -1843,12 +1858,14 @@ msgstr "Төлбөр буцаалт"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Refund Payslip"
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Refund: %s"
 msgstr ""
 
@@ -1973,6 +1990,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Salary Slip of %(name)s for %(dt)s"
 msgstr ""
 
@@ -2141,6 +2159,7 @@ msgstr "Энэ дүрэмд хэрэглэгдсэн хамгийн бага д�
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid "The payslip %(nm)s is already canceled please deselect it"
 msgstr ""
 
@@ -2164,6 +2183,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid ""
 "To cancel the Original Payslip the\n"
 "                        Refunded Payslip needs to be canceled first!"
@@ -2201,18 +2221,6 @@ msgid "Waiting"
 msgstr "Хүлээгдэж буй"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip__website_message_ids
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: payroll
-#: model:ir.model.fields,help:payroll.field_hr_payslip__website_message_ids
-#: model:ir.model.fields,help:payroll.field_hr_payslip_run__website_message_ids
-msgid "Website communication history"
-msgstr ""
-
-#. module: payroll
 #: model:ir.model.fields.selection,name:payroll.selection__hr_contract__schedule_pay__weekly
 msgid "Weekly"
 msgstr "Долоо хоног бүр"
@@ -2245,6 +2253,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong percentage base or quantity defined for salary rule %(nm)s (%(code)s) "
 "for employee %(ee)s."
@@ -2253,6 +2262,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong quantity defined for salary rule %(nm)s (%(code)s) for employee %(ee)s."
 msgstr ""
@@ -2260,6 +2270,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong range condition defined for salary rule %(nm)s (%(code)s) for employee "
 "%(ee)s."
@@ -2268,31 +2279,30 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payroll_structure.py:0
+#, python-format
 msgid "You cannot create a recursive salary structure."
 msgstr "Өөрийгөө агуулсан цалингийн бүтэц үүсгэх боломжгүй"
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "You cannot delete a payslip which is not draft or cancelled"
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payroll_payslips_by_employees.py:0
+#, python-format
 msgid "You must select employee(s) to generate payslip(s)."
 msgstr "Цалингийн хуудсуудыг үүсгэхийн тулд ажилчдыг сонгох ёстой."
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip_line.py:0
+#, python-format
 msgid "You must set a contract to create a payslip line."
 msgstr "Цалингийн хуудсын мөр үүсгэхийн тулд гэрээ тохируулах ёстой."
-
-#. module: payroll
-#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
-msgid "period"
-msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip_line__amount_percentage_base
@@ -2304,3 +2314,140 @@ msgstr "үр дүн нь хувьсагчид нөлөөлнө"
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_line_view_form
 msgid "total_net"
 msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "Сүүлийн засвар хийсэн огноо"
+
+#~ msgid "Input Data"
+#~ msgstr "Оруулах өгөгдөл"
+
+#, python-format
+#~ msgid "Salary Slip of %s for %s"
+#~ msgstr "%s-н цалингийн хуудас %s хувьд"
+
+#~ msgid "Post payroll slips in accounting"
+#~ msgstr "Цалингийн хуудсыг санхүү бүртгэлд тусгах"
+
+#, python-format
+#~ msgid "Wrong percentage base or quantity defined for salary rule %s (%s)."
+#~ msgstr "%s (%s) цалингийн дүрэмд буруу хувь эсвэл тоо хэмжээ байна."
+
+#, python-format
+#~ msgid "Wrong quantity defined for salary rule %s (%s)."
+#~ msgstr "%s (%s) цалингийн дүрэмд буруу тоо хэмжээ тодорхойлогдсон байна."
+
+#, python-format
+#~ msgid "Wrong range condition defined for salary rule %s (%s)."
+#~ msgstr "%s (%s) цалингийн дүрэмд мужийн нөхцөл буруу байна."
+
+#~ msgid "General"
+#~ msgstr "Ерөнхий"
+
+#~ msgid "Draft Slip"
+#~ msgstr "Ноорог хуудас"
+
+#~ msgid "Total Working Days"
+#~ msgstr "Нийт ажлын өдөр"
+
+#~ msgid "Details By Salary Rule Category"
+#~ msgstr "Дэлгэрэнгүй нь цалингийн дүрмийн ангилал"
+
+#~ msgid "Advantage Name"
+#~ msgstr "Давуу талын нэр"
+
+#~ msgid "Contract Advantage Templates"
+#~ msgstr "Ажилтны давуу талын загварууд"
+
+#~ msgid "Default value for this advantage"
+#~ msgstr "Давуу талын анхны утга"
+
+#~ msgid "Employee's Advantage on Contract"
+#~ msgstr "Гэрээн дээрхи ажилтны давуу тал"
+
+#~ msgid "Lower Bound"
+#~ msgstr "Доод хязгаар"
+
+#~ msgid "Lower bound authorized by the employer for this advantage"
+#~ msgstr "Ажилтнаар баталгаажсан хамгийн доод хязгаар"
+
+#~ msgid "Upper Bound"
+#~ msgstr "Дээд хязгаар"
+
+#~ msgid "Upper bound authorized by the employer for this advantage"
+#~ msgstr "Ажилтнаар баталгаажсан хамгийн дээд хязгаар"
+
+#~ msgid "Wrong python code defined for salary rule %s (%s)."
+#~ msgstr "%s (%s) цалингийн дүрэмд буруу Python код тодорхойлогдсон байна."
+
+#~ msgid "Wrong python condition defined for salary rule %s (%s)."
+#~ msgstr "%s (%s) цалингийн дүрэмд буруу Python нөхцөл тодорхойлогдсон байна."
+
+#~ msgid ""
+#~ "<span colspan=\"4\" nolabel=\"1\">This wizard will generate payslips for "
+#~ "all selected employee(s) based on the dates and credit note specified on "
+#~ "Payslips Run.</span>"
+#~ msgstr ""
+#~ "<span colspan=\"4\" nolabel=\"1\">Энэ харилцах цонх нь сонгосон "
+#~ "ажилтнуудын цалингийн хуудсыг огноо болон цагийн хуудас ажиллуулсан "
+#~ "хугацаанд харгалзах зээлийн мэдэгдэлд үндэслэн үүсгэдэг.</span>"
+
+#~ msgid ""
+#~ "A contribution register is a third party involved in the salary\n"
+#~ "            payment of the employees. It can be the social security, the\n"
+#~ "            state or anyone that collect or inject money on payslips."
+#~ msgstr ""
+#~ "Суутгал шимтгэлийн төрөл гэдэг нь цалингийн дүнгээс гуравдагч \n"
+#~ "этгээд суутгал шимтгэл авах явдалд хэрэглэгдэнэ. Тухайлбал \n"
+#~ "нийгмийн даатгал, эрүүл мэндийн даатгал, ажилгүйдлийн тэтгэмж гэх мэт."
+
+#~ msgid "PaySlip Lines By Conribution Register"
+#~ msgstr "Цалингийн хуудсын мөрүүд нь хандивын бүртгэлээр"
+
+#~ msgid ""
+#~ "* When the payslip is created the status is 'Draft'\n"
+#~ "                \n"
+#~ "* If the payslip is under verification, the status is 'Waiting'.\n"
+#~ "                \n"
+#~ "* If the payslip is confirmed then status is set to 'Done'.\n"
+#~ "                \n"
+#~ "* When user cancel payslip the status is 'Rejected'."
+#~ msgstr ""
+#~ "* Цалингийн хуудсыг үүсгэсэн дараа төлөв нь 'Ноорог' байна\n"
+#~ "                 \n"
+#~ "* Хэрэв цалингийн хуудас шалгагдаж байгаа бол төлөв нь 'Хүлээж буй' "
+#~ "байна.\n"
+#~ "                 \n"
+#~ "* Хэрэв цалингийн хуудас нь батлагдсан бол 'Хийгдсэн' төлөвтэй болно.\n"
+#~ "                 \n"
+#~ "* Хэрэв хэрэглэгч цалингийн хуудсыг цуцласан бол 'Татгалзсан' төлөвтэй "
+#~ "болно."
+
+#~ msgid "<span class=\"o_form_label\">Payroll Rules</span>"
+#~ msgstr "<span class=\"o_form_label\">Цалингийн дүрэм</span>"
+
+#~ msgid "Account"
+#~ msgstr "Данс"
+
+#~ msgid "Belgium Payroll"
+#~ msgstr "Бельги цалин"
+
+#~ msgid "Choose a Payroll Localization"
+#~ msgstr "Цалингийн нутагшуулалт  сонгох"
+
+#~ msgid "French Payroll"
+#~ msgstr "Франц цалин"
+
+#~ msgid "Indian Payroll"
+#~ msgstr "Энэтхэг цалин"
+
+#~ msgid "Payroll rules that apply to your country"
+#~ msgstr "Зөвшөөрөгдөх цалингийн дүрмүүд"
+
+#~ msgid "Payslip 'Date From' must be earlier 'Date To'."
+#~ msgstr "Цалингийн хуудсын 'Эхлэх өдөр' нь 'Дуусах өдөр'-өөс өмнө байна."
+
+#~ msgid "Refund: "
+#~ msgstr "Нөхөн төлөх "
+
+#~ msgid "You cannot delete a payslip which is not draft or cancelled!"
+#~ msgstr "Ноорог эсвэл цуцлагдсан биш бол цалингийн хуудсыг устгах боломжгүй!"

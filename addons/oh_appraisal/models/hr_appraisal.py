@@ -3,7 +3,7 @@
 #    A part of Open HRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 2024-TODAY Cybrosys Technologies (<https://www.cybrosys.com>)
+#    Copyright (C) 2023-TODAY Cybrosys Technologies (<https://www.cybrosys.com>)
 #
 #    This program is free software: you can modify
 #    it under the terms of the GNU Affero General Public License (AGPL) as
@@ -19,7 +19,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 ###############################################################################
-from odoo import api, fields, models, _
+from odoo import api, fields, models, SUPERUSER_ID, _
 from odoo.exceptions import ValidationError
 
 
@@ -31,22 +31,18 @@ class HrAppraisal(models.Model):
     _description = 'HR Appraisal'
 
     @api.model
-    def _read_group_stage_ids(self, categories, domain):
+    def _read_group_stage_ids(self, categories, domain, order):
         """ Read all the stages and display it in the kanban view,
         even if it is empty."""
-        category_ids = categories._search([], order=categories._order)
+        category_ids = categories._search([], order=order,
+                                          access_rights_uid=SUPERUSER_ID)
         return categories.browse(category_ids)
 
     def _default_stage_id(self):
         """Setting default stage"""
-        rec = self.env['hr.appraisal.stages'].search([], limit=1,order='sequence ASC')
+        rec = self.env['hr.appraisal.stages'].search([], limit=1,
+                                                     order='sequence ASC')
         return rec.id if rec else None
-
-    @api.model
-    def create(self, vals):
-        """inherits the create method to update the stage to draft"""
-        vals['stage_id'] =  self.env['hr.appraisal.stages'].search([('sequence', '=', 0)]).id
-        return super(HrAppraisal, self).create(vals)
 
     employee_id = fields.Many2one('hr.employee', string="Employee",
                                   help="Employee name")
@@ -139,21 +135,21 @@ class HrAppraisal(models.Model):
 
     def action_done(self):
         """Method action_done to make the appraisal into done state"""
-        rec = self.env['hr.appraisal.stages'].search([('sequence', '=', 2)])
+        rec = self.env['hr.appraisal.stages'].search([('sequence', '=', 3)])
         self.stage_id = rec.id
         self.check_done = True
         self.check_draft = False
 
     def action_set_draft(self):
         """Method action_set_draft to make the appraisal into draft state"""
-        rec = self.env['hr.appraisal.stages'].search([('sequence', '=', 0)])
+        rec = self.env['hr.appraisal.stages'].search([('sequence', '=', 1)])
         self.stage_id = rec.id
         self.check_draft = True
         self.check_sent = False
 
     def action_cancel(self):
         """Method action_cancel to make the appraisal into canceled state"""
-        rec = self.env['hr.appraisal.stages'].search([('sequence', '=', 3)])
+        rec = self.env['hr.appraisal.stages'].search([('sequence', '=', 4)])
         self.stage_id = rec.id
         self.check_cancel = True
         self.check_draft = False
@@ -205,7 +201,7 @@ class HrAppraisal(models.Model):
                     send_count += 1
                     self.write({'tot_sent_survey': send_count})
                     rec = self.env['hr.appraisal.stages'].search(
-                        [('sequence', '=', 1)])
+                        [('sequence', '=', 2)])
                     self.stage_id = rec.id
                     self.check_sent = True
                     self.check_draft = False
@@ -221,9 +217,9 @@ class HrAppraisal(models.Model):
             'model': 'ir.actions.act_window',
             'name': 'Answers',
             'type': 'ir.actions.act_window',
-            'view_mode': 'form,list',
+            'view_mode': 'form,tree',
             'res_model': 'survey.user_input',
-            'views': [(tree_id, 'list'), (form_id, 'form')],
+            'views': [(tree_id, 'tree'), (form_id, 'form')],
             'domain': [('state', '=', 'done'),
                        ('appraisal_id', '=', self.ids[0])],
         }

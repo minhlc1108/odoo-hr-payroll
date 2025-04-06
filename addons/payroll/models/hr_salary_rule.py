@@ -1,7 +1,5 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import traceback
-
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.safe_eval import safe_eval
@@ -39,7 +37,7 @@ class HrSalaryRule(models.Model):
         help="Used to display the salary rule on payslip.",
     )
     parent_rule_id = fields.Many2one(
-        comodel_name="hr.salary.rule", string="Parent Salary Rule", index=True
+        "hr.salary.rule", string="Parent Salary Rule", index=True
     )
     company_id = fields.Many2one(
         "res.company",
@@ -63,29 +61,32 @@ class HrSalaryRule(models.Model):
     condition_python = fields.Text(
         string="Python Condition",
         required=True,
-        default="""# Available variables:
-#-------------------------------
-# payslip: hr.payslip object
-# payslips: object containing payslips (browsable)
-# employee: hr.employee object
-# contract: hr.contract object
-# rules: object containing the rules code (previously computed)
-# categories: object containing the computed salary rule categories
-#    (sum of amount of all rules belonging to that category).
-# worked_days: object containing the computed worked days.
-# inputs: object containing the computed inputs.
-# payroll: object containing miscellaneous values related to payroll
-# current_contract: object with values calculated from the current contract
-# result_rules: object with a dict of qty, rate, amount an total of calculated rules
-# tools: object that contain libraries and tools that can be used in calculations
+        default="""
+            # Available variables:
+            #-------------------------------
+            # payslip: hr.payslip object
+            # payslips: object containing payslips (browsable)
+            # employee: hr.employee object
+            # contract: hr.contract object
+            # rules: object containing the rules code (previously computed)
+            # categories: object containing the computed salary rule categories
+            #    (sum of amount of all rules belonging to that category).
+            # worked_days: object containing the computed worked days.
+            # inputs: object containing the computed inputs.
+            # payroll: object containing miscellaneous values related to payroll
+            # current_contract: object with values calculated from the current contract
+            # result_rules: object with a dict of qty, rate, amount an total of calculated rules
+            # tools: object that contain libraries and tools that can be used in calculations
 
-# Available compute variables:
-#-------------------------------
-# result: returned value have to be set in the variable 'result'
+            # Available compute variables:
+            #-------------------------------
+            # result: returned value have to be set in the variable 'result'
 
-# Example:
-#-------------------------------
-# result = worked_days.WORK0 and worked_days.WORK0.number_of_days > 0""",  # noqa: E501
+            # Example:
+            #-------------------------------
+            # result = worked_days.WORK0 and worked_days.WORK0.number_of_days > 0
+
+            """,  # noqa: E501
         help="Applied this rule for calculation if condition is true. You can "
         "specify condition like basic > 1000.",
     )
@@ -115,32 +116,35 @@ class HrSalaryRule(models.Model):
     )
     amount_python_compute = fields.Text(
         string="Python Code",
-        default="""# Available variables:
-#-------------------------------
-# payslip: hr.payslip object
-# payslips: object containing payslips (browsable)
-# employee: hr.employee object
-# contract: hr.contract object
-# rules: object containing the rules code (previously computed)
-# categories: object containing the computed salary rule categories
-#    (sum of amount of all rules belonging to that category).
-# worked_days: object containing the computed worked days.
-# inputs: object containing the computed inputs.
-# payroll: object containing miscellaneous values related to payroll
-# current_contract: object with values calculated from the current contract
-# result_rules: object with a dict of qty, rate, amount an total of calculated rules
-# tools: object that contain libraries and tools that can be used in calculations
+        default="""
+            # Available variables:
+            #-------------------------------
+            # payslip: hr.payslip object
+            # payslips: object containing payslips (browsable)
+            # employee: hr.employee object
+            # contract: hr.contract object
+            # rules: object containing the rules code (previously computed)
+            # categories: object containing the computed salary rule categories
+            #    (sum of amount of all rules belonging to that category).
+            # worked_days: object containing the computed worked days.
+            # inputs: object containing the computed inputs.
+            # payroll: object containing miscellaneous values related to payroll
+            # current_contract: object with values calculated from the current contract
+            # result_rules: object with a dict of qty, rate, amount an total of calculated rules
+            # tools: object that contain libraries and tools that can be used in calculations
 
-# Available compute variables:
-#-------------------------------
-# result: returned value have to be set in the variable 'result'
-# result_rate: the rate that will be applied to "result".
-# result_qty: the quantity of units that will be multiplied to "result".
-# result_name: if this variable is computed, it will contain the name of the line.
+            # Available compute variables:
+            #-------------------------------
+            # result: returned value have to be set in the variable 'result'
+            # result_rate: the rate that will be applied to "result".
+            # result_qty: the quantity of units that will be multiplied to "result".
+            # result_name: if this variable is computed, it will contain the name of the line.
 
-# Example:
-#-------------------------------
-# result = contract.wage * 0.10""",  # noqa: E501
+            # Example:
+            #-------------------------------
+            # result = contract.wage * 0.10
+
+            """,  # noqa: E501
     )
     amount_percentage_base = fields.Char(
         string="Percentage based on", help="result will be affected to a variable"
@@ -163,15 +167,10 @@ class HrSalaryRule(models.Model):
 
     @api.constrains("parent_rule_id")
     def _check_parent_rule_id(self):
-        if self.env.registry[self._name]._name != "hr.salary.rule":
-            # HrPayslipLine inherits from "hr.salary.rule" and we don't
-            # want to do this check on a payslip line
-            return
-        for rule in self:
-            if rule._has_cycle(field_name="parent_rule_id"):
-                raise ValidationError(
-                    _("Error! You cannot create recursive hierarchy of Salary Rules.")
-                )
+        if not self._check_recursion(parent="parent_rule_id"):
+            raise ValidationError(
+                _("Error! You cannot create recursive hierarchy of Salary Rules.")
+            )
 
     def _recursive_search_of_rules(self):
         """
@@ -249,8 +248,8 @@ class HrSalaryRule(models.Model):
     def _compute_rule_code(self, localdict):
         try:
             safe_eval(self.amount_python_compute, localdict, mode="exec", nocopy=True)
+            return self._get_rule_dict(localdict)
         except Exception as ex:
-            exc_text = "".join(traceback.format_exception(ex))
             raise UserError(
                 _(
                     """
@@ -264,10 +263,9 @@ Here is the error received:
                     "nm": self.name,
                     "code": self.code,
                     "ee": localdict["employee"].name,
-                    "err": exc_text,
+                    "err": repr(ex),
                 }
             ) from ex
-        return self._get_rule_dict(localdict)
 
     def _get_rule_dict(self, localdict):
         name = localdict.get("result_name") or self.name
@@ -315,8 +313,8 @@ Here is the error received:
     def _satisfy_condition_python(self, localdict):
         try:
             safe_eval(self.condition_python, localdict, mode="exec", nocopy=True)
+            return "result" in localdict and localdict["result"] or False
         except Exception as ex:
-            exc_text = "".join(traceback.format_exception(ex))
             raise UserError(
                 _(
                     """
@@ -330,7 +328,6 @@ Here is the error received:
                     "nm": self.name,
                     "code": self.code,
                     "ee": localdict["employee"].name,
-                    "err": exc_text,
+                    "err": repr(ex),
                 }
             ) from ex
-        return "result" in localdict and localdict["result"] or False

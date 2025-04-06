@@ -8,8 +8,9 @@ import babel
 from dateutil.relativedelta import relativedelta
 from pytz import timezone
 
-from odoo import _, api, fields, models
+from odoo import _, api, fields, models, tools
 from odoo.exceptions import UserError, ValidationError
+from odoo.tools.safe_eval import safe_eval
 
 from .base_browsable import (
     BaseBrowsableObject,
@@ -227,44 +228,34 @@ class HrPayslip(models.Model):
         return self.write({"state": "cancel"})
 
     def refund_sheet(self):
-        copied_payslips = self.env["hr.payslip"]
         for payslip in self:
-            # Create a refund slip
             copied_payslip = payslip.copy(
                 {"credit_note": True, "name": _("Refund: %s") % payslip.name}
             )
-            # Assign a number
             number = copied_payslip.number or self.env["ir.sequence"].next_by_code(
                 "salary.slip"
             )
             copied_payslip.write({"number": number})
-            # Validated refund slip
             copied_payslip.with_context(
                 without_compute_sheet=True
             ).action_payslip_done()
-            # Write refund reference on payslip
-            payslip.write(
-                {"refunded_id": copied_payslip.id if copied_payslip else False}
-            )
-            # Add to list of refund slips
-            copied_payslips |= copied_payslip
-        # Action to open list view of refund slips
         formview_ref = self.env.ref("payroll.hr_payslip_view_form", False)
         treeview_ref = self.env.ref("payroll.hr_payslip_view_tree", False)
         res = {
             "name": _("Refund Payslip"),
-            "view_mode": "list, form",
+            "view_mode": "tree, form",
             "view_id": False,
             "res_model": "hr.payslip",
             "type": "ir.actions.act_window",
             "target": "current",
-            "domain": [("id", "in", copied_payslips.ids)],
+            "domain": "[('id', 'in', %s)]" % copied_payslip.ids,
             "views": [
-                (treeview_ref and treeview_ref.id or False, "list"),
+                (treeview_ref and treeview_ref.id or False, "tree"),
                 (formview_ref and formview_ref.id or False, "form"),
             ],
             "context": {},
         }
+        payslip.write({"refunded_id": safe_eval(res["domain"])[0][2][0] or False})
         return res
 
     def unlink(self):
@@ -765,14 +756,15 @@ class HrPayslip(models.Model):
 
     def _compute_name(self):
         for record in self:
-            date_formatted = babel.dates.format_date(
-                date=datetime.combine(record.date_from, time.min),
-                format="MMMM-y",
-                locale=record.env.context.get("lang") or "en_US",
-            )
             record.name = _("Salary Slip of %(name)s for %(dt)s") % {
                 "name": record.employee_id.name,
-                "dt": str(date_formatted),
+                "dt": tools.ustr(
+                    babel.dates.format_date(
+                        date=datetime.combine(record.date_from, time.min),
+                        format="MMMM-y",
+                        locale=record.env.context.get("lang") or "en_US",
+                    )
+                ),
             }
 
     @api.onchange("contract_id")

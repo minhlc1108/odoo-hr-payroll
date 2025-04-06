@@ -45,7 +45,7 @@ class HrSalaryRuleCategory(models.Model):
 
     @api.constrains("parent_id")
     def _check_parent_id(self):
-        if self._has_cycle():
+        if not self._check_recursion():
             raise ValidationError(
                 _(
                     "Error! You cannot create recursive hierarchy of Salary "

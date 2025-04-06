@@ -43,6 +43,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "\n"
 "Wrong python code defined for salary rule %(nm)s (%(code)s) for employee "
@@ -55,6 +56,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "\n"
 "Wrong python condition defined for salary rule %(nm)s (%(code)s) for "
@@ -67,6 +69,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payroll_structure.py:0
+#, python-format
 msgid "%s (copy)"
 msgstr "%s (копие)"
 
@@ -217,18 +220,17 @@ msgstr ""
 #: model:mail.template,body_html:payroll.mail_template_hr_payslip
 msgid ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
-"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;"
-"\">\n"
-"            Dear <t t-out=\"object.employee_id.name\"/>,\n"
-"            <br/><br/>\n"
+"        <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"            Dear <t t-out=\"object.employee_id.name\"></t>,\n"
+"            <br><br>\n"
 "            Please find attached the payslip for <t t-out=\"object."
-"payslip_run_id.name\"/>.\n"
-"            <br/><br/>\n"
+"payslip_run_id.name\"></t>.\n"
+"            <br><br>\n"
 "            Do not hesitate to contact us if you have any questions.\n"
-"            <br/><br/>\n"
-"            <t t-out=\"user.signature\"/>\n"
+"            <br><br>\n"
+"            <t t-out=\"user.signature\"></t>\n"
 "        </p>\n"
-"                </div>\n"
+"    </div>\n"
 "            "
 msgstr ""
 
@@ -567,6 +569,7 @@ msgstr "Отменете фиш за заплата"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Cannot cancel a payslip that is done."
 msgstr "Не можете да анулирате фиш за заплата, което вече е обработен."
 
@@ -950,6 +953,7 @@ msgstr ""
 #: model:ir.model,name:payroll.model_hr_employee
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__employee_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__employee_id
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
 msgid "Employee"
 msgstr "Служител"
 
@@ -985,12 +989,14 @@ msgstr "Служители"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule_category.py:0
+#, python-format
 msgid "Error! You cannot create recursive hierarchy of Salary Rule Category."
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid "Error! You cannot create recursive hierarchy of Salary Rules."
 msgstr ""
 
@@ -1046,6 +1052,7 @@ msgstr "Например, въведете 50.0, за да приложите п
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/report/report_contribution_register.py:0
+#, python-format
 msgid "Form content is missing, this report cannot be printed."
 msgstr "Form content is missing, this report cannot be printed."
 
@@ -1073,6 +1080,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Global Leaves"
 msgstr ""
 
@@ -1414,6 +1422,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Normal Working Days paid at 100%"
 msgstr "Нормалните работни дни, платени 100%"
 
@@ -1465,6 +1474,7 @@ msgstr "Длъжностно лице"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only draft payslips can be verified,the payslip %(nm)s is in %(st)s state"
 msgstr ""
@@ -1472,6 +1482,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only payslips in states verify or draft can be confirmed, the payslip %(nm)s "
 "is in %(st)s state"
@@ -1480,6 +1491,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid ""
 "Only rejected payslips can be reset to draft, the payslip %(nm)s is in "
 "%(st)s state"
@@ -1594,6 +1606,7 @@ msgstr "Фиш за заплата"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Payslip 'Date From' must be earlier than 'Date To'."
 msgstr ""
 
@@ -1693,6 +1706,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:payroll.hr_employee_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_run_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
+#, python-format
 msgid "Payslips"
 msgstr "Фишове за заплата"
 
@@ -1826,6 +1840,7 @@ msgstr "Ставка (%)"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip_line.py:0
+#, python-format
 msgid "Recursion error. Only one line should be parent of %s"
 msgstr ""
 
@@ -1848,12 +1863,14 @@ msgstr "Кредитно известие"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Refund Payslip"
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Refund: %s"
 msgstr ""
 
@@ -1978,6 +1995,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Salary Slip of %(name)s for %(dt)s"
 msgstr ""
 
@@ -2146,6 +2164,7 @@ msgstr "Максималната сума, която се прилага за �
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
 msgid "The payslip %(nm)s is already canceled please deselect it"
 msgstr ""
 
@@ -2170,6 +2189,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid ""
 "To cancel the Original Payslip the\n"
 "                        Refunded Payslip needs to be canceled first!"
@@ -2207,18 +2227,6 @@ msgid "Waiting"
 msgstr "Изчакващ"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip__website_message_ids
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: payroll
-#: model:ir.model.fields,help:payroll.field_hr_payslip__website_message_ids
-#: model:ir.model.fields,help:payroll.field_hr_payslip_run__website_message_ids
-msgid "Website communication history"
-msgstr ""
-
-#. module: payroll
 #: model:ir.model.fields.selection,name:payroll.selection__hr_contract__schedule_pay__weekly
 msgid "Weekly"
 msgstr "Седмично"
@@ -2251,6 +2259,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong percentage base or quantity defined for salary rule %(nm)s (%(code)s) "
 "for employee %(ee)s."
@@ -2259,6 +2268,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong quantity defined for salary rule %(nm)s (%(code)s) for employee %(ee)s."
 msgstr ""
@@ -2266,6 +2276,7 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
 msgid ""
 "Wrong range condition defined for salary rule %(nm)s (%(code)s) for employee "
 "%(ee)s."
@@ -2274,31 +2285,30 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payroll_structure.py:0
+#, python-format
 msgid "You cannot create a recursive salary structure."
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "You cannot delete a payslip which is not draft or cancelled"
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payroll_payslips_by_employees.py:0
+#, python-format
 msgid "You must select employee(s) to generate payslip(s)."
 msgstr "Трябва да изберете служител(и), за да създадете фишове за заплата(и)."
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip_line.py:0
+#, python-format
 msgid "You must set a contract to create a payslip line."
 msgstr "Трябва да настроите договор, за да създадете ред на фиш за заплата."
-
-#. module: payroll
-#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
-msgid "period"
-msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip_line__amount_percentage_base
@@ -2310,3 +2320,84 @@ msgstr "резултатът ще повлияе на различни"
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_line_view_form
 msgid "total_net"
 msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "Последно коригирано на"
+
+#~ msgid "Input Data"
+#~ msgstr "Данни за дейности"
+
+#, python-format
+#~ msgid "Salary Slip of %s for %s"
+#~ msgstr "Фиш за заплата на %s за %s"
+
+#, python-format
+#~ msgid "Wrong percentage base or quantity defined for salary rule %s (%s)."
+#~ msgstr ""
+#~ "Грешно изчислен процент на база или количество, определени за правилото "
+#~ "за заплати %s (%s)."
+
+#, python-format
+#~ msgid "Wrong quantity defined for salary rule %s (%s)."
+#~ msgstr "Грешно количество, определено за правило за заплата %s (%s)."
+
+#, python-format
+#~ msgid "Wrong range condition defined for salary rule %s (%s)."
+#~ msgstr ""
+#~ "Грешно състояние на обхват, определено за правило за заплата %s (%s)."
+
+#~ msgid "General"
+#~ msgstr "Основен"
+
+#~ msgid "Draft Slip"
+#~ msgstr "Чернова фиш за заплата"
+
+#~ msgid "Total Working Days"
+#~ msgstr "Общ брой работни дни"
+
+#~ msgid "Details By Salary Rule Category"
+#~ msgstr "Подробности по категория 'Правила за заплати'"
+
+#~ msgid "Wrong python code defined for salary rule %s (%s)."
+#~ msgstr "Грешен код python, определен за правило за заплата %s (%s)."
+
+#~ msgid "Wrong python condition defined for salary rule %s (%s)."
+#~ msgstr "Грешно състояние python, определено за правило за заплата %s (%s)."
+
+#~ msgid "PaySlip Lines By Conribution Register"
+#~ msgstr "Редове на фишове за заплати по регистър за приноса"
+
+#~ msgid ""
+#~ "* When the payslip is created the status is 'Draft'\n"
+#~ "                \n"
+#~ "* If the payslip is under verification, the status is 'Waiting'.\n"
+#~ "                \n"
+#~ "* If the payslip is confirmed then status is set to 'Done'.\n"
+#~ "                \n"
+#~ "* When user cancel payslip the status is 'Rejected'."
+#~ msgstr ""
+#~ "* При създаването на фиша за заплата, състоянието е 'Чернова'\n"
+#~ "                \n"
+#~ "* Ако фишът за заплата очаква потвърждение, състоянието е 'Изчакващ'.\n"
+#~ "                \n"
+#~ "* Ако фишът за заплата е потвърден, тогава състоянието е настроено като "
+#~ "'Извършен'.\n"
+#~ "                \n"
+#~ "* Когато потребителят отмени фиша за заплата, състоянието е 'Отхвърлен'."
+
+#~ msgid "Account"
+#~ msgstr "Сметка"
+
+#~ msgid "French Payroll"
+#~ msgstr "French Payroll"
+
+#~ msgid "Indian Payroll"
+#~ msgstr "Индия - ТРЗ"
+
+#~ msgid "Refund: "
+#~ msgstr "Кредитно известие: "
+
+#~ msgid "You cannot delete a payslip which is not draft or cancelled!"
+#~ msgstr ""
+#~ "YНе можете да изтриете фиш за заплата, който не е чернова или не е "
+#~ "отменен!"

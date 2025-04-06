@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--    Inherits the form view of the model Survey User Input-->
+<!--    Inherits the form view of the model Survey User Input-->
     <record model="ir.ui.view" id="survey_user_input_view_form">
         <field name="name">survey.user_input.view.form.inherit.oh.appraisal
         </field>

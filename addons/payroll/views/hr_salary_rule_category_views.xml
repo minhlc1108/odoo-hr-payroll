@@ -21,10 +21,10 @@
                         <page string="Salary Rules">
                             <separator string="Associated Salary Rules" />
                             <field name="salary_rules_ids" nolabel="1" create="false">
-                                <list>
+                                <tree>
                                     <field name="code" decoration-bf="1" />
                                     <field name="name" />
-                                </list>
+                                </tree>
                             </field>
                         </page>
                     </notebook>
@@ -41,14 +41,14 @@
         </field>
     </record>
     <record id="hr_salary_rule_category_view_tree" model="ir.ui.view">
-        <field name="name">hr.salary.rule.category.list</field>
+        <field name="name">hr.salary.rule.category.tree</field>
         <field name="model">hr.salary.rule.category</field>
         <field name="arch" type="xml">
-            <list>
+            <tree>
                 <field name="name" />
                 <field name="code" />
                 <field name="parent_id" column_invisible="1" />
-            </list>
+            </tree>
         </field>
     </record>
     <record id="hr_salary_rule_category_view_search" model="ir.ui.view">

@@ -23,8 +23,7 @@ Credits
 _______
 Developers :Saritha Sahadevan,
             Athira Premanand,
-            (V17) Arjun S,
-            (V18)Raneesha M K
+            (V17) Arjun S
 Contact: odoo@cybrosys.com
 
 Contacts
@@ -40,7 +39,6 @@ Maintainer
 __________
 .. image:: https://cybrosys.com/images/logo.png
    :target: https://cybrosys.com
-
 This module is maintained by Cybrosys Technologies.
 For support and more information, please visit `Our Website <https://cybrosys.com/>`__
 

@@ -3,7 +3,7 @@
 #    A part of Open HRMS Project <https://www.openhrms.com>
 #
 #    Cybrosys Technologies Pvt. Ltd.
-#    Copyright (C) 2024-TODAY Cybrosys Technologies (<https://www.cybrosys.com>)
+#    Copyright (C) 2023-TODAY Cybrosys Technologies (<https://www.cybrosys.com>)
 #
 #    This program is free software: you can modify
 #    it under the terms of the GNU Affero General Public License (AGPL) as
@@ -21,7 +21,7 @@
 ###############################################################################
 {
     'name': "Open HRMS Employee Appraisal",
-    'version':  '18.0.1.0.0',
+    'version': '17.0.1.0.0',
     'category': 'Human Resources',
     'summary': """Roll out appraisal plans and get the best of your 
     workforce""",
